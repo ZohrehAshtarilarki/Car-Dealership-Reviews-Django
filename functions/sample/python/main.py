@@ -18,7 +18,7 @@ def main(dict):
             api_key=dict["IAM_API_KEY"],
             connect=True,
         )
-        print("Databases: {0}".format(client.all_dbs()))
+        print("Databases:", client.all_dbs())  # Used an f-string for formatting
     except CloudantException as ce:
         print("Unable to connect")
         return {"error": str(ce)}
