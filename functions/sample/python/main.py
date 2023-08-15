@@ -34,13 +34,11 @@ def main(input_dict):
     except CloudantException as cloudant_exception:
         print("Unable to connect")
         return {"error": str(cloudant_exception)}
-    except (requests.exceptions.RequestException, 
-            ConnectionResetError) as err:
+    except (requests.exceptions.RequestException, ConnectionResetError) as err:
         print("Connection error")
         return {"error": str(err)}
 
     return {"dbs": client.all_dbs()}
 
 if __name__ == "__main__":
-    pass  # Placeholder to satisfy the missing module 
-          # docstring warning
+    pass  # Placeholder to satisfy the missing module docstring warning
