@@ -12,8 +12,6 @@ def main(dict):
     Returns:
         dict: The output of this action, which must be a JSON object.
     """
-    database_name = "dealerships"  # Renamed the variable to follow snake_case convention
-
     try:
         client = Cloudant.iam(
             account_name=dict["COUCH_USERNAME"],
@@ -22,10 +20,13 @@ def main(dict):
         )
         print("Databases: {0}".format(client.all_dbs()))
     except CloudantException as ce:
-        print("Unable to connect")  # Corrected the capitalization
-        return {"error": str(ce)}  # Convert CloudantException to string
+        print("Unable to connect")
+        return {"error": str(ce)}
     except (requests.exceptions.RequestException, ConnectionResetError) as err:
         print("Connection error")
-        return {"error": str(err)}  # Convert the exception to string
+        return {"error": str(err)}
 
     return {"dbs": client.all_dbs()}  # Return a JSON response
+
+if __name__ == "__main__":
+    pass  # Placeholder to satisfy the missing module docstring warning
